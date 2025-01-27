@@ -1,0 +1,175 @@
+body {
+    margin: auto 175px;
+    font-family: Space Mono;
+    font-weight: bold;
+}
+
+nav {
+    margin: 30px auto 30px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav img {
+    width: auto;
+    height: 50px;
+    cursor: pointer;
+}
+
+nav ul {
+    display: flex;
+    gap: 75px;
+
+    li {
+        font-family: Space Mono;
+        font-weight: bold;
+        font-size: 24px;
+        list-style: none;
+        cursor: pointer;
+
+        a {
+            color: #fff;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+h1 {
+    font-size: 30px;
+    color: #fff;
+    margin: 100px 0 20px 20px;
+}
+
+.models-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.model-card {
+    margin: 20px auto;
+    text-decoration: none;
+
+    img {
+        width: 275px;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        font-size: 20px;
+        color: #fff;
+        display: inline;
+        cursor: pointer;
+    }
+
+    &:has(img):hover {
+        img {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 10px #000;
+        }
+    }
+}
+
+
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer .footer-logo {
+    width: 100px;
+    cursor: pointer;
+    margin-bottom: 50px;
+}
+
+footer .sponsors {
+    display: flex;
+    justify-content: space-between;
+
+    img {
+        height: 25px;
+        margin: 20px 50px;
+        width: auto;
+        cursor: pointer;
+    }
+}
+
+footer .quick-links {
+    display: flex;
+    flex-direction: row;
+    width: 1500px;
+    justify-content: space-between;
+    align-items: top;
+    margin-top: 50px;
+
+    h1 {
+        font-size: 20px;
+        color: #bbb;
+        margin: 10px 0;
+    }
+
+    li {
+        list-style: none;
+        line-height: 1.7;
+
+        a {
+            font-size: 18px;
+            color: #999;
+            cursor: pointer;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+                color: #bbb;
+            }
+        }
+    }
+}
+
+
+footer .copywrite {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1500px;
+    margin: 100px 50px 50px 50px;
+    color: #bbb;
+    font-family: Arial;
+    font-size: 18px;
+    font-weight: normal;
+
+    .left,
+    .right {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        p {
+            margin: 0;
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .right .socials {
+        width: 30px;
+        margin-left: 10px;
+    }
+}
