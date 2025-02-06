@@ -1,203 +1,255 @@
-body {
-    margin: auto 175px;
-    font-family: Space Mono;
-    font-weight: bold;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 nav {
-    margin: 30px auto auto auto;
+    position: fixed;
+    z-index: 1;
+    height: 100px;
+    width: 100%;
+    padding: 0 50px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    background: linear-gradient(to bottom, #000000dd, #00000000);
 
-    img {
-        width: auto;
-        height: 50px;
+    .hamburger {
+        height: 20px;
+        opacity: 0.8;
         cursor: pointer;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    a .logo {
+        top: 35px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 30px;
     }
 
     ul {
+        list-style: none;
+        justify-self: flex-end;
         display: flex;
+        flex-direction: row;
+        justify-content: space-around;
         gap: 75px;
+        padding: 0 20px;
 
-        li {
-            font-family: Space Mono;
-            font-weight: bold;
-            font-size: 24px;
-            list-style: none;
-            cursor: pointer;
+        a {
+            font: 20px Metronic Pro Light;
+            text-decoration: none;
+            color: #000;
+            opacity: 0.8;
 
-            a {
-                color: #fff;
-                text-decoration: none;
-
-                &:hover {
-                    text-decoration: underline;
-                }
+            &:hover {
+                opacity: 1;
             }
         }
     }
 }
 
+#landscape img {
+    width: 100%;
+    mask-image: linear-gradient(to bottom,
+            rgba(0, 0, 0, 1) 25%,
+            rgba(0, 0, 0, 0.5) 75%,
+            rgba(0, 0, 0, 0) 100%);
+}
 
-
-
-.cover {
+#details {
+    position: absolute;
+    top: 78%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    margin: 0 122px;
+    width: 60%;
+    gap: 50px;
 
     h1 {
-        font-size: 75px;
-        text-align: left;
-        margin-bottom: 5px;
+        font: 75px Metronic Pro Bold;
     }
 
-    img {
-        width: 100%;
-        object-fit: contain;
-        border-radius: 20px;
+    p {
+        font: 20px Metronic Pro Light;
+        line-height: 1.7;
+        opacity: 0.9;
     }
 }
+
 
 .main-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-top: 30px;
-    gap: 30px;
+    margin: 0 120px;
+    gap: 50px;
 
-    h1 {
-        font-size: 40px;
+    h2 {
+        font: 28px Metronic Pro;
+        margin: 0 25px;
     }
-}
 
-.scenes {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-content: space-between;
-    width: 100%;
-    gap: 50px 25px;
+    #scene-container {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
 
-    .video-card {
-        width: 500px;
-        cursor: pointer;
-        text-decoration: none;
-        color: #000;
+        .scene {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 50px;
+            text-decoration: none;
+            color: #000;
+            padding: 20px;
+            border-bottom: 1px solid #333;
+            transition: background-color 0.3s ease;
 
-        img {
-            width: 100%;
-            object-fit: contain;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
+            .count {
+                margin: 10px 10px 10px 40px;
+                font: 30px Metronic Pro Air;
+                opacity: 0.8;
+            }
 
-        h2 {
-            font-size: 24px;
-            margin: 10px 5px;
-        }
+            .image-container {
+                position: relative;
 
-        &:has(img):hover {
-            img {
-                transform: translateY(-5px);
-                box-shadow: 0 5px 10px #000;
+                img {
+                    height: 200px;
+                }
+
+                .overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 200px;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                }
+            }
+
+            &:hover {
+                background-color: #222;
+
+                .image-container .overlay {
+                    opacity: 1;
+                }
+            }
+
+            .detail {
+                display: flex;
+                flex-direction: column;
+                gap: 25px;
+
+                h2 {
+                    font: 24px Metronic Pro;
+                    width: 90%;
+                    line-height: 1.5;
+                    margin: 0;
+                }
+
+                .misc {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 50px;
+                    font: 16px Metronic Pro Air;
+                    opacity: 0.7;
+                }
+
+                p {
+                    font: 18px Metronic Pro Air;
+                    width: 90%;
+                    opacity: 0.8;
+                    line-height: 1.5;
+                }
             }
         }
+
+        .scene:first-child {
+            border-top: 1px solid #333;
+        }
     }
 }
+
+
+
+
+
 
 
 
 footer {
+    background-color: #0b0b0b;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-}
-
-footer .footer-logo {
-    width: 100px;
-    cursor: pointer;
-    margin-bottom: 50px;
-}
-
-footer .sponsors {
-    display: flex;
-    justify-content: space-between;
 
     img {
-        height: 25px;
-        margin: 20px 50px;
-        width: auto;
-        cursor: pointer;
-    }
-}
-
-footer .quick-links {
-    display: flex;
-    flex-direction: row;
-    width: 1500px;
-    justify-content: space-between;
-    align-items: top;
-    margin-top: 50px;
-
-    h1 {
-        font-size: 20px;
-        color: #bbb;
-        margin: 10px 0;
+        width: 100px;
+        margin: 75px;
     }
 
-    li {
-        list-style: none;
-        line-height: 1.7;
 
-        a {
-            font-size: 18px;
-            color: #999;
-            cursor: pointer;
-            text-decoration: none;
+    .quick-links {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 70%;
 
-            &:hover {
-                text-decoration: underline;
-                color: #bbb;
+        ul {
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+            gap: 15px;
+
+            h3 {
+                font: 20px Metronic Pro;
+            }
+
+            li a {
+                font: 16px Metronic Pro Light;
+                text-decoration: none;
+                color: #000;
+                opacity: 0.8;
+
+                &:hover {
+                    opacity: 1;
+                }
             }
         }
     }
-}
 
-
-footer .copywrite {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 1500px;
-    margin: 100px 50px 50px 50px;
-    color: #bbb;
-    font-family: Arial;
-    font-size: 18px;
-    font-weight: normal;
-
-    .left,
-    .right {
+    .copywrite {
         display: flex;
-        align-items: center;
-        gap: 10px;
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 70%;
+        padding: 30px 0;
+        border-top: 1px solid #00000030;
+        gap: 30px;
+        font: 16px Metronic Pro Air;
+
+        span {
+            cursor: default;
+            opacity: 0.6;
+        }
 
         p {
-            margin: 0;
             cursor: pointer;
+            opacity: 0.6;
 
             &:hover {
                 text-decoration: underline;
+                opacity: 1;
             }
         }
-    }
-
-    .right .socials {
-        width: 30px;
-        margin-left: 10px;
     }
 }

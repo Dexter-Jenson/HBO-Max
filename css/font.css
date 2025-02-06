@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Metronic Pro Bold';
+    src: url('../assets/fonts/Metronic Pro Bold.TTF') format('truetype');
+}
+
+@font-face {
+    font-family: 'Metronic Pro Semibold';
+    src: url('../assets/fonts/Metronic Pro Semibold.TTF') format('truetype');
+}
+
+@font-face {
+    font-family: 'Metronic Pro';
+    src: url('../assets/fonts/Metronic Pro.TTF') format('truetype');
+}
+
+@font-face {
+    font-family: 'Metronic Pro Light';
+    src: url('../assets/fonts/Metronic Pro Light.TTF') format('truetype');
+}
+
+@font-face {
+    font-family: 'Metronic Pro Air';
+    src: url('../assets/fonts/Metronic Pro Air.TTF') format('truetype');
+}

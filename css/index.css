@@ -1,374 +1,417 @@
-:root {
-    --gradient-1: #b3e5f2;
-    --gradient-2: #d8c0e0;
-    --primary-color: #5865f2;
-}
-
 * {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: auto 150px;
-    font-family: Space Mono;
-    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 nav {
-    margin: 30px auto 30px auto;
+    position: fixed;
+    z-index: 1;
+    height: 100px;
+    width: 100%;
+    padding: 0 122px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-}
+    background: linear-gradient(to bottom, #000, #00000000);
 
-nav img {
-    width: auto;
-    height: 50px;
-    cursor: pointer;
-}
-
-nav ul {
-    display: flex;
-    gap: 75px;
-
-    li {
-        font-family: Space Mono;
-        font-weight: bold;
-        font-size: 24px;
-        list-style: none;
-        cursor: pointer;
-
-        a {
-            color: #fff;
-            text-decoration: none;
-
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-    }
-}
-
-
-.slider {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-}
-
-#slide-container {
-    display: flex;
-    gap: 10%;
-    transition: transform 2s cubic-bezier(1, 0, 0, 1);
-}
-
-#slide-container img {
-    flex: 0 0 100%;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-
-.video-list,
-.pornstars {
-    margin: 20px;
-}
-
-.video-list .upper,
-.pornstars .upper {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: baseline;
-
-    h1 {
-        font-size: 30px;
-    }
-
-    a {
-        font-size: 18px;
-        text-decoration: none;
-        color: #fff;
-        cursor: pointer;
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-}
-
-.scrollable {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    padding: 10px 0;
-}
-
-.scrollable::-webkit-scrollbar {
-    display: none;
-}
-
-
-
-
-
-
-.video-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin: 0 5px;
-    text-decoration: none;
-    color: #000;
-}
-
-.video-card img {
-    width: 400px;
-    object-fit: cover;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-
-    &:hover {
-        box-shadow: 0px 0px 15px #000;
-        transform: translate(0px, -5px);
-    }
-}
-
-.video-card h2 {
-    font-size: 18px;
-    margin: 15px 0;
-    cursor: pointer;
-}
-
-
-
-.categories {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    margin: 20px 20px;
-
-    h1 {
-        font-size: 30px;
-    }
-}
-
-.categories div {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.large-image,
-.small-image {
-    height: 450px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 24px;
-    cursor: pointer;
-    transition: background-image 0.3s ease;
-}
-
-.large-image {
-    width: 760px;
-}
-
-.small-image {
-    width: 380px;
-}
-
-
-
-
-
-
-.discord {
-    position: inherit;
-    margin: 0;
-    width: 100%;
-
-    img {
-        width: 100%;
-    }
-
-}
-
-
-.pornstars {
-    display: flex;
-    flex-direction: column;
-}
-
-
-.model-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin: 0 5px 150px 0;
-    text-decoration: none;
-    color: #000;
-
-    img {
-        width: 250px;
-        border-radius: 15px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-
-        &:hover {
-            box-shadow: 0px 5px 15px #000;
-            transform: translate(0px, -5px);
-        }
-    }
-
-    h2 {
-        font-family: Rubik;
-        font-size: 18px;
-        font-weight: normal;
-        margin: 15px 5px;
-        cursor: pointer;
-    }
-}
-
-
-
-
-
-
-
-footer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-
-footer .footer-logo {
-    width: 100px;
-    cursor: pointer;
-    margin-bottom: 50px;
-}
-
-footer .sponsors {
-    display: flex;
-    justify-content: space-between;
-
-    img {
-        height: 25px;
-        margin: 20px 50px;
-        width: auto;
-        cursor: pointer;
-    }
-}
-
-footer .lorem-ipsum {
-    margin-top: 50px;
-    font-size: 18px;
-    color: #bbb;
-    max-width: 600px;
-    text-align: center;
-}
-
-footer .newsletter {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-top: 10px;
-
-    input {
-        width: 400px;
+    a img {
         height: 30px;
-        border: 2px solid #555;
-        border-radius: 7px;
-        padding: 10px;
-        font: 18px Space Mono;
-        font-weight: bold;
     }
 
-    button {
-        background-color: var(--primary-color);
-        color: #fff;
-        font: 18px Space Mono;
-        font-weight: bold;
-        padding: 13px 20px;
-        border: none;
-        border-radius: 7px;
-        cursor: pointer;
-
-        &:hover {
-            background-color: #4e58c5;
-        }
-    }
-}
-
-footer .quick-links {
-    display: flex;
-    flex-direction: row;
-    width: 80%;
-    justify-content: space-between;
-    align-items: top;
-    margin-top: 25px;
-
-    h1 {
-        font-size: 20px;
-        color: #bbb;
-    }
-
-    li {
+    ul {
         list-style: none;
-        line-height: 1.7;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        gap: 75px;
+        padding: 0;
+        margin: 0 20px;
 
         a {
-            font-size: 18px;
-            color: #999;
-            cursor: pointer;
+            font: 20px Metronic Pro Light;
             text-decoration: none;
+            color: #000;
+            opacity: 0.8;
 
             &:hover {
-                text-decoration: underline;
-                color: #bbb;
+                opacity: 1;
             }
         }
     }
 }
 
 
-footer .copywrite {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 90%;
-    margin: 50px;
-    color: #bbb;
-    font-family: Arial;
-    font-size: 18px;
-    font-weight: normal;
+.cover-scene {
+    a img {
+        width: 100%;
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    }
+}
 
-    .left,
-    .right {
+.scene-info {
+    position: absolute;
+    top: 55%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin: auto 122px;
+    z-index: 1;
+
+    h1 {
+        font: 50px Metronic Pro;
+        max-width: 70%;
+    }
+
+    div {
         display: flex;
+        flex-direction: row;
         align-items: center;
-        gap: 10px;
+        gap: 50px;
+
+        .button {
+            border: none;
+            background: none;
+
+            img {
+                height: 40px;
+            }
+
+            opacity: 0.8;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
 
         p {
-            margin: 0;
-            cursor: pointer;
+            font: 24px Metronic Pro Air;
+        }
+    }
+
+    #description {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        max-width: 70%;
+
+        p {
+            font: 24px Metronic Pro Light;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+            gap: 10px;
+
+            li a {
+                font: 20px Metronic Pro;
+                text-decoration: none;
+                color: #555;
+                background-color: #111;
+                border-radius: 3px;
+                padding: 0 15px 3px 15px;
+
+                &:hover {
+                    color: #444;
+                }
+            }
+        }
+    }
+}
+
+.scenes,
+.models {
+    margin: auto 75px;
+
+    .heading {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 25px auto;
+
+        h2 {
+            font: 28px Metronic Pro;
+        }
+
+        button {
+            background: none;
+            padding: 5px 25px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            font: 18px Metronic Pro;
+            opacity: 0.8;
 
             &:hover {
-                text-decoration: underline;
+                opacity: 1;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+
+.scenes #recent-scenes {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .scene-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-decoration: none;
+        color: #000;
+        gap: 15px;
+        width: 100%;
+
+        .image-container {
+            position: relative;
+            width: 100%;
+        }
+
+        img {
+            height: 250px;
+            border-radius: 5px;
+            display: block;
+        }
+
+        p {
+            font: 16px Metronic Pro Light;
+        }
+
+        h3 {
+            font: 20px Metronic Pro;
+            line-height: 1.5;
+            margin-right: 20px;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        &:hover .overlay {
+            opacity: 1;
+        }
+    }
+}
+
+.sponsor-box {
+    width: 92%;
+    display: block;
+    margin: 0 auto;
+}
+
+.category-container {
+    background-color: #0b0b0b;
+    padding: 50px 100px;
+    text-align: center;
+
+
+    h2 {
+        font: 50px Metronic Pro Semibold;
+        margin: 10px auto;
+    }
+
+    p {
+        font: 20px Metronic Pro;
+    }
+
+    .categories {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin: 50px auto;
+
+        a {
+            aspect-ratio: 35 / 40;
+            background-size: cover;
+            text-align: center;
+            color: #000;
+            text-decoration: none;
+            transition: background-image 0.3s ease;
+        }
+    }
+}
+
+.models #top-models {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    overflow-x: auto;
+    margin: 30px auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .model-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: #000;
+        gap: 15px;
+        width: 100%;
+
+        .image-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .model {
+            width: 300px;
+            display: block;
+            border-radius: 5px;
+            mask-image: linear-gradient(to bottom, #000000ff 50%, #00000000 105%);
+        }
+
+        h3 {
+            position: absolute;
+            bottom: 7%;
+            font: 20px Metronic Pro Semibold;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            border-radius: 5px;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        &:hover .overlay {
+            opacity: 1;
+        }
+    }
+}
+
+footer {
+    background-color: #0b0b0b;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .newsletter {
+        display: flex;
+        flex-direction: row;
+        width: 70%;
+        justify-content: space-between;
+        align-items: center;
+
+        img {
+            width: 100px;
+            margin: 75px 0;
+        }
+
+        .email {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            height: 50px;
+            gap: 10px;
+            width: 40%;
+
+            input {
+                border: none;
+                background-color: #000;
+                width: 100%;
+                padding: 0 15px;
+            }
+
+            button {
+                border: none;
+                font: 18px Metronic Pro;
+                background-color: #222;
+                padding: 0 20px;
+
+                &:hover {
+                    background-color: #333;
+                }
             }
         }
     }
 
-    .right .socials {
-        width: 30px;
-        margin-left: 10px;
+    .website-box {
+        width: 900px;
+        margin: 100px auto;
+        opacity: 0.5;
+    }
+
+    .quick-links {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 70%;
+        margin: 75px auto;
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            list-style: none;
+            gap: 15px;
+
+            h3 {
+                font: 20px Metronic Pro;
+            }
+
+            li a {
+                font: 16px Metronic Pro Light;
+                text-decoration: none;
+                color: #000;
+                opacity: 0.8;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    .copywrite {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 70%;
+        margin: 30px auto;
+        gap: 30px;
+        font: 16px Metronic Pro Air;
+
+        span {
+            cursor: default;
+            opacity: 0.6;
+        }
+
+        p {
+            cursor: pointer;
+            opacity: 0.6;
+
+            &:hover {
+                text-decoration: underline;
+                opacity: 1;
+            }
+        }
     }
 }
