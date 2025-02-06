@@ -1,66 +1,66 @@
-const container = document.getElementById("slide-container");
-const prev = document.getElementById("prev");
-const next = document.getElementById("next");
+document.addEventListener('DOMContentLoaded', () => {
+    const cover_scene = document.getElementById('cover-scene');
+    fetch('json/scenes.json')
+        .then(res => res.json())
+        .then(scenes => {
+            const scene = scenes[0];
 
-let currentIndex = 0;
-const images = document.querySelectorAll("#slide-container img");
-const totalImages = images.length - 1;
+            cover_scene.innerHTML = `<a><img src="${scene.cover}" /></a>`;
 
-function updateSlide() {
-    container.style.transform = `translateX(-${currentIndex * 110}%)`;
-}
+            const scene_info = document.getElementById('scene-info');
 
-function goToNext() {
-    currentIndex = (currentIndex + 1) % totalImages;
-    updateSlide();
-}
-
-function goToPrev() {
-    currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-    updateSlide();
-}
-
-let autoSlide = setInterval(() => {
-    goToNext();
-}, 10000);
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
-    const pornList = document.getElementById("porn-list");
-
-    fetch("./scenes.json")
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error("Failed to fetch videos.json");
-            }
-            return response.json();
-        })
-        .then((data) => {
-            const videos = data.slice(0, 7);
-            videos.forEach((video) => {
-                const videoCard = document.createElement("a");
-                videoCard.href = `scene.html?sceneID=${video.id}`
-                videoCard.addEventListener('click', () => {
-                    window.location.href = `scene.html?sceneID=${encodeURIComponent(video.id)}`;
-                })
-                videoCard.className = "video-card";
-
-                videoCard.innerHTML = `
-                <img src="${video.cover}">
-                <h2>${video.title}</h2>
+            scene_info.innerHTML = `
+                <h1>${scene.title}</h1>
+                <div>
+                    <a class="button" href="scene.html?sceneID=${encodeURIComponent(scene.id)}">
+                        <img src="assets/gotoscene.png" />
+                    </a>
+                    <p>TV-MA</p>
+                    <p>HD</p>
+                    <p>${scene.production}</p>
+                </div>
+                <div id="description">
+                    <p>As the soft glow of candlelight flickers across the room, two lovers find themselves drawn into an irresistible moment of passion. Their eyes lock, anticipation thick in the air. Hands explore eagerly and trailing over sensitive skin, sending shivers of pleasure down their spines.</p>
+                </div>
             `;
 
-                pornList.appendChild(videoCard);
-            });
+            const tags = document.createElement('ul');
+            tags.innerHTML = `
+                ${scene.tags.map(tag => `
+                    <li><a href="scenes.html?category=${encodeURIComponent(tag)}">${tag}</a></li>
+                `).join('')}
+            `;
+
+            document.getElementById('description').appendChild(tags);
         })
-        .catch((error) => {
-            console.error("Error fetching or displaying videos:", error);
-        });
-});
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('json/scenes.json')
+        .then(res => res.json())
+        .then(data => {
+            const scenes = data.slice(0, 7);
+            const recentScenes = document.getElementById('recent-scenes');
+
+            scenes.forEach(scene => {
+                const sceneCard = document.createElement("a");
+                sceneCard.href = `scene.html?sceneID=${scene.id}`;
+                sceneCard.className = "scene-card";
+                sceneCard.innerHTML = `
+                    <div class="image-container">
+                        <img src="${scene.cover}" />
+                        <img src="assets/overlay-scene.png" class="overlay" />
+                    </div>
+                    <p>${scene.production}</p>
+                    <h3>${scene.title}</h3>
+                `;
+                recentScenes.appendChild(sceneCard);
+            })
+        })
+})
 
 
-document.querySelectorAll('.image').forEach(container => {
+document.querySelectorAll('.category').forEach(container => {
     const hoverImage = container.getAttribute('data-hover');
     const originalImage = container.style.backgroundImage;
 
@@ -73,38 +73,26 @@ document.querySelectorAll('.image').forEach(container => {
     });
 });
 
-function navigateCategory(button) {
-    const category = button.getAttribute('data-category');
-    window.location.href = `scenes.html?category=${category}`;
-}
 
-document.addEventListener("DOMContentLoaded", () => {
-    const modelList = document.getElementById("model-list");
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('json/models.json')
+        .then(res => res.json())
+        .then(data => {
+            const models = data.slice(0, 10);
+            const topmodels = document.getElementById('top-models');
 
-    fetch("./models.json")
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error("Failed to fetch models.json");
-            }
-            return response.json();
-        })
-        .then((data) => {
-            const models = data.slice(0, 7);
-            models.forEach((model) => {
+            models.forEach(model => {
                 const modelCard = document.createElement("a");
-                modelCard.href = `model.html?model=${(model.name)}`;
+                modelCard.href = `model.html?model=${model.name}`;
                 modelCard.className = "model-card";
-                modelCard.addEventListener('click', () => window.location.href = `model.html?model=${encodeURIComponent(model.name)}`);
-
                 modelCard.innerHTML = `
-                <img src="${model.portrait}">
-                <h2>${model.name}</h2>
-            `;
-
-                modelList.appendChild(modelCard);
-            });
+                    <div class="image-container">
+                        <img src="${model.portrait}" class="model" />
+                        <img src="assets/overlay-model.png" class="overlay" />
+                    </div>
+                    <h3>${model.name}</h3>
+                `;
+                topmodels.appendChild(modelCard);
+            })
         })
-        .catch((error) => {
-            console.error("Error fetching or displaying videos:", error);
-        });
-});
+})
